@@ -1,4 +1,0 @@
-void add_edge(vector <vector <int> > &vect,int u, int v , int w) {       //function to add edge into the matrix
-   vect[u][v] = w;
-   vect[v][u] = w;
-}
