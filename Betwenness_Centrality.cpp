@@ -9,13 +9,13 @@ using namespace std;
 /*Defines*/
 typedef pair<int,int> ipair;
 #define INF 0x3f3f3f3f
-#define max 10000
+#define max 100000
 
 /*Functions Prototypes*/
 void Print_Paths_Recrusive (int src, int des, vector<bool> visited, vector<int> path, int index, vector<vector<int>> adj_matrix);
 void Print_all_paths (int src, int des, vector<vector<int>> adj_matrix);
 int path_distance (vector<int> nodes_path, vector<vector<int>> adj_matrix);
-void Betweeneess_centrality (vector <pair<int,int>> src_des,vector<vector<int>> short_path,vector<vector<int>> adj_matrix);
+void Betweeneess_centrality (vector<vector<int>> adj_matrix);
 float betweeneess_value (int index, int node,vector<pair<int,int>> src_des, vector<vector<int>> short_path, int paths);
 int is_paths_above (int index,vector<pair<int,int>> src_des);
 
@@ -23,7 +23,7 @@ int is_paths_above (int index,vector<pair<int,int>> src_des);
 int s  = 0;
 int f = 0 ;
 int l = 0;
-vector<vector<int>> all (max, vector<int>());
+vector<vector<int>> all(max, vector<int>());
 
 int main (void)
 {
@@ -31,24 +31,18 @@ int main (void)
   int n,m;
 
   cin>>n>>m;
-  assert( (2<=n<=100) && ((n-1)<=m<=n*(n-1)/2));
+  assert( (2<=n<=15) && ((n-1)<=m<=n*(n-1)/2));
   vector<vector<int>> adj_matrix(n,vector<int>(n,0));
-  vector<pair<int,int>> Src_Des(max, pair<int,int>());
-  vector<vector<int>> Short_Path(max, vector<int>());
- 
+
   for (int i=0; i<m; i++)
   {
     cin>>node1>>node2>>weight;
 	adj_matrix[node1][node2] = weight;
     adj_matrix[node2][node1] = weight;
   }
+  //all.resize(n,vector<int>());
 
-  Betweeneess_centrality (Src_Des,Short_Path,adj_matrix);
-
-  
-
- // int value =  Betweenneess_Centrality (4,Src_Des,Short_Paths,adj_matrix);  
-  //cout << "g(4) = "<< value <<"\n";
+  Betweeneess_centrality (adj_matrix);
  return 0;
 }
 
@@ -167,11 +161,14 @@ int is_paths_above (int index,vector<pair<int,int>> src_des)
 	return paths;
 }
 
-void Betweeneess_centrality (vector <pair<int,int>> src_des,vector<vector<int>> short_path,vector<vector<int>> adj_matrix)
+void Betweeneess_centrality (vector<vector<int>> adj_matrix)
 {
 	int n = adj_matrix.size();  //4
 	int g = 0;
 	float g_node = 0;;
+	vector<pair<int,int>> src_des;
+	vector<vector<int>> short_path(max, vector<int>());
+	
 	vector<vector<int>> all_paths;
 	vector<int> paths_distances;
 	vector<int> final_short_paths_isa;
@@ -187,9 +184,10 @@ void Betweeneess_centrality (vector <pair<int,int>> src_des,vector<vector<int>> 
 
 		  final_short_paths_isa = Min_distance_path (paths_distances, min);
 		  int size = final_short_paths_isa.size();
+		 
 		  for (int i=0; i<size; i++)
 		  {
-             src_des[f].first = node;    src_des[f].second = des;
+			  src_des.push_back(make_pair(node,des)); 
 			 short_path[f] = all[final_short_paths_isa[size-1-i]];
 			 final_short_paths_isa.pop_back();
 			 f++;
@@ -213,17 +211,3 @@ void Betweeneess_centrality (vector <pair<int,int>> src_des,vector<vector<int>> 
 	  l = 0;
    }
 }
-
-
-
-/*
-void Betweeneess_Centrality (vector<vector<int>> adj_matrix)
-{
-  vector <pair<int,int>> Src_Des (max, pair<int,int>());
-  vector<vector<int>> Short_Paths(max, vector<int>());
-
-
-}
-
-
-*/
