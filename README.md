@@ -1,6 +1,5 @@
 # SocialMediaAnalysisProject
 1.Team Info:
-
 Group"62"
 
 Members:Yasmeen Mostafa Hassan Elnaggar      Yasmeen Mohamed Mohamed ELsayed
@@ -11,7 +10,6 @@ CodeForces Team "Yasmines"
 
 
 2.Work Distribution "Tasks":
-
 Yasmeen Mohamed ELsayed-> Degree Centrality, Graph Visualization
 
 
@@ -20,9 +18,7 @@ Yasmeen Mostafa Hassan -> Closeness Centrality, Betweenness Centrality
 
 
 3. Detailed Work and Install the requirements:
-
  3.1. Degree Centrality:
- 
   -Firstly, main file which calculated the degree centrality of each node was written in Visual studio then tested it on the console with input taken into adjacent matrix of size n * n.
   
 
@@ -37,7 +33,6 @@ Yasmeen Mostafa Hassan -> Closeness Centrality, Betweenness Centrality
 
 
  3.2. Closeness Centrality:
- 
   -Firstly, main file including the Closeness Centrality was written in C++ in visual studio then was tested and it was worked perfectly.
 
 
@@ -49,7 +44,6 @@ Yasmeen Mostafa Hassan -> Closeness Centrality, Betweenness Centrality
 
 
  3.3. Betweeneess Centrality:
- 
    -The first algorithm that was written of Betweeneess Centrality took more time to print the table that contained the shortest paths between each two nodes, the algorithm idea was to print the shortest paths for each node with all other nodes, and also the node itself in a recursive way and the input was represented in an adjacent matrix of n * n, but the problem was that we couldn't print the multiple shortest paths that existed between two nodes as it just printed one of them. 
 
 
@@ -64,7 +58,6 @@ Yasmeen Mostafa Hassan -> Closeness Centrality, Betweenness Centrality
 
 
   3.4. Graph Visualization:
-  
    -We had decided to make a GUI using python libraries "networkx & matplotlib" to draw the connected directed weighted graph.
 
 
